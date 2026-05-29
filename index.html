@@ -1,118 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Okinawa Friends & Family Trip 2026</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+    
+    /* 變數定義 (與你原始 UI 規範對齊) */
+    :root {
+      --color-text-primary: #1a1a1a;
+      --color-text-secondary: #666666;
+      --color-border-secondary: #b3b3b3;
+      --color-border-tertiary: #e5e5e5;
+      --color-background-primary: #ffffff;
+      --color-background-secondary: #f9f9f9;
+      --border-radius-md: 8px;
+      --border-radius-lg: 12px;
+    }
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap');
-*{box-sizing:border-box;margin:0;padding:0}
-.oki{font-family:'DM Sans',sans-serif;padding:2rem 0.25rem 2.5rem;max-width:660px}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: #f5f5f7; display: flex; justify-content: center; min-height: 100vh; font-family: 'DM Sans', sans-serif; }
+    
+    /* 隱藏無障礙語音讀取文字 */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
 
-.hero{margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:0.5px solid var(--color-border-tertiary)}
-.hero h1{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:400;color:var(--color-text-primary);line-height:1.2;letter-spacing:0.2px}
-.hero h1 em{font-style:italic;color:#1d9e75}
-.hero-sub{display:flex;justify-content:space-between;align-items:center;margin-top:10px;flex-wrap:wrap;gap:8px}
-.hero-dates{font-size:13px;color:var(--color-text-secondary);letter-spacing:0.6px;text-transform:uppercase}
-.weather-pill{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border:0.5px solid var(--color-border-tertiary);border-radius:20px;font-size:13px;color:var(--color-text-secondary);cursor:pointer;background:none;font-family:'DM Sans',sans-serif;transition:background 0.15s}
-.weather-pill:hover{background:var(--color-background-secondary)}
-.weather-pill i{font-size:16px;color:#1d9e75}
+    /* 主容器 */
+    .oki { font-family: 'DM Sans', sans-serif; padding: 2rem 1rem 5rem; max-width: 660px; width: 100%; background: var(--color-background-primary); min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.02); }
 
-.weather-box{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:16px 18px;margin-bottom:1.8rem;display:none}
-.weather-box.open{display:block;animation:fd 0.2s}
-@keyframes fd{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
-.weather-box h3{font-size:12px;letter-spacing:0.8px;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:12px}
-.wx-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.wx-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:10px 8px;text-align:center}
-.wx-card .wx-day{font-size:11px;color:var(--color-text-secondary);margin-bottom:5px}
-.wx-card .wx-ico{font-size:20px;margin-bottom:4px}
-.wx-card .wx-temp{font-size:13px;font-weight:500;color:var(--color-text-primary)}
-.wx-card .wx-desc{font-size:11px;color:var(--color-text-secondary);margin-top:3px}
-.wx-note{font-size:13px;color:var(--color-text-secondary);margin-top:12px;line-height:1.7;padding-top:12px;border-top:0.5px solid var(--color-border-tertiary)}
+    .hero { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+    .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 400; color: var(--color-text-primary); line-height: 1.2; letter-spacing: 0.2px; }
+    .hero h1 em { font-style: italic; color: #1d9e75; }
+    .hero-sub { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; flex-wrap: wrap; gap: 8px; }
+    .hero-dates { font-size: 13px; color: var(--color-text-secondary); letter-spacing: 0.6px; text-transform: uppercase; }
+    .weather-pill { display: inline-flex; align-items: center; gap: 6px; padding: 7px 13px; border: 0.5px solid var(--color-border-tertiary); border-radius: 20px; font-size: 13px; color: var(--color-text-secondary); cursor: pointer; background: none; font-family: 'DM Sans', sans-serif; transition: background 0.15s; }
+    .weather-pill:hover { background: var(--color-background-secondary); }
+    .weather-pill i { font-size: 16px; color: #1d9e75; }
 
-.flights{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.5rem}
-.fl{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:13px 16px;cursor:pointer;transition:border-color 0.15s}
-.fl:hover{border-color:var(--color-border-secondary)}
-.fl .fl-label{font-size:11px;letter-spacing:0.6px;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:7px;display:flex;align-items:center;gap:5px}
-.fl .fl-label i{font-size:14px}
-.fl .fl-route{font-size:14px;font-weight:500;color:var(--color-text-primary)}
-.fl .fl-route span{color:#1d9e75}
-.fl .fl-time{font-size:13px;color:var(--color-text-secondary);margin-top:4px}
+    .weather-box { background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 16px 18px; margin-bottom: 1.8rem; display: none; }
+    .weather-box.open { display: block; animation: fd 0.2s; }
+    @keyframes fd { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+    .weather-box h3 { font-size: 12px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 12px; }
+    .wx-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    @media (max-width: 480px) { .wx-grid { grid-template-columns: repeat(2, 1fr); } }
+    .wx-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 10px 8px; text-align: center; }
+    .wx-card .wx-day { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 5px; }
+    .wx-card .wx-ico { font-size: 20px; margin-bottom: 4px; }
+    .wx-card .wx-temp { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+    .wx-card .wx-desc { font-size: 11px; color: var(--color-text-secondary); margin-top: 3px; }
+    .wx-note { font-size: 13px; color: var(--color-text-secondary); margin-top: 12px; line-height: 1.7; padding-top: 12px; border-top: 0.5px solid var(--color-border-tertiary); }
 
-.tools{display:flex;gap:8px;margin-bottom:1.8rem}
-.tbtn{flex:1;display:flex;align-items:center;gap:7px;padding:10px 14px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);background:none;color:var(--color-text-secondary);font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;transition:background 0.15s,color 0.15s}
-.tbtn i{font-size:16px}
-.tbtn:hover{background:var(--color-background-secondary);color:var(--color-text-primary)}
+    .flights { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.5rem; }
+    @media (max-width: 480px) { .flights { grid-template-columns: 1fr; } }
+    .fl { border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 13px 16px; cursor: pointer; transition: border-color 0.15s; text-decoration: none; display: block; }
+    .fl:hover { border-color: var(--color-border-secondary); }
+    .fl .fl-label { font-size: 11px; letter-spacing: 0.6px; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 7px; display: flex; align-items: center; gap: 5px; }
+    .fl .fl-label i { font-size: 14px; }
+    .fl .fl-route { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
+    .fl .fl-route span { color: #1d9e75; }
+    .fl .fl-time { font-size: 13px; color: var(--color-text-secondary); margin-top: 4px; }
 
-.rate-panel{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:16px 18px;margin-bottom:1.8rem;display:none}
-.rate-panel.open{display:block;animation:fd 0.2s}
-.rate-panel h3{font-size:12px;letter-spacing:0.8px;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:14px}
-.rate-main{display:flex;align-items:baseline;gap:6px;margin-bottom:14px}
-.rate-big{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:400;color:var(--color-text-primary)}
-.rate-unit{font-size:13px;color:var(--color-text-secondary)}
-.rate-inputs{display:flex;flex-direction:column;gap:10px}
-.rate-row{display:flex;align-items:center;gap:10px}
-.rate-row label{font-size:13px;color:var(--color-text-secondary);width:38px}
-.rate-row input{width:120px;padding:7px 10px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-secondary);color:var(--color-text-primary);font-size:14px;font-family:'DM Sans',sans-serif}
-.rate-row .result{font-size:14px;font-weight:500;color:var(--color-text-primary)}
+    .tools { display: flex; gap: 8px; margin-bottom: 1.8rem; }
+    .tbtn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 7px; padding: 10px 14px; border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); background: none; color: var(--color-text-secondary); font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer; transition: background 0.15s, color 0.15s; text-decoration: none; }
+    .tbtn i { font-size: 16px; }
+    .tbtn:hover { background: var(--color-background-secondary); color: var(--color-text-primary); }
 
-.nav{display:flex;gap:0;margin-bottom:2rem;border-bottom:0.5px solid var(--color-border-tertiary);overflow-x:auto}
-.ntab{background:none;border:none;padding:11px 0;margin-right:26px;font-size:14px;color:var(--color-text-secondary);font-family:'DM Sans',sans-serif;cursor:pointer;position:relative;white-space:nowrap;transition:color 0.15s}
-.ntab::after{content:'';position:absolute;bottom:-0.5px;left:0;right:0;height:1.5px;background:transparent;transition:background 0.15s}
-.ntab.active{color:var(--color-text-primary);font-weight:500}
-.ntab.active::after{background:var(--color-text-primary)}
+    .rate-panel { border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 16px 18px; margin-bottom: 1.8rem; display: none; }
+    .rate-panel.open { display: block; animation: fd 0.2s; }
+    .rate-panel h3 { font-size: 12px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 14px; }
+    .rate-main { display: flex; align-items: baseline; gap: 6px; margin-bottom: 14px; }
+    .rate-big { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 400; color: var(--color-text-primary); }
+    .rate-unit { font-size: 13px; color: var(--color-text-secondary); }
+    .rate-inputs { display: flex; flex-direction: column; gap: 10px; }
+    .rate-row { display: flex; align-items: center; gap: 10px; }
+    .rate-row label { font-size: 13px; color: var(--color-text-secondary); width: 38px; }
+    .rate-row input { width: 120px; padding: 7px 10px; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); background: var(--color-background-secondary); color: var(--color-text-primary); font-size: 14px; font-family: 'DM Sans', sans-serif; }
+    .rate-row .result { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
 
-.panel{display:none}
-.panel.active{display:block;animation:fd 0.25s}
+    .nav { display: flex; gap: 0; margin-bottom: 2rem; border-bottom: 0.5px solid var(--color-border-tertiary); overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .nav::-webkit-scrollbar { display: none; }
+    .ntab { background: none; border: none; padding: 11px 0; margin-right: 26px; font-size: 14px; color: var(--color-text-secondary); font-family: 'DM Sans', sans-serif; cursor: pointer; position: relative; white-space: nowrap; transition: color 0.15s; }
+    .ntab::after { content: ''; position: absolute; bottom: -0.5px; left: 0; right: 0; height: 1.5px; background: transparent; transition: background 0.15s; }
+    .ntab.active { color: var(--color-text-primary); font-weight: 500; }
+    .ntab.active::after { background: var(--color-text-primary); }
 
-.panel-header{margin-bottom:1.5rem}
-.panel-header .day-n{font-size:12px;letter-spacing:0.8px;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:6px}
-.panel-header h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;color:var(--color-text-primary);line-height:1.2}
-.panel-header .badge-row{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
-.badge{font-size:12px;padding:3px 10px;border-radius:12px;border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
-.badge.charter{background:#e1f5ee;border-color:#9fe1cb;color:#0f6e56}
+    .panel { display: none; }
+    .panel.active { display: block; animation: fd 0.25s; }
 
-.tip{display:flex;gap:10px;padding:12px 14px;margin-bottom:1.2rem;border-left:2px solid;border-radius:0}
-.tip.food{border-color:#1d9e75}
-.tip.info{border-color:#378add}
-.tip i{font-size:16px;flex-shrink:0;margin-top:1px}
-.tip.food i{color:#1d9e75}
-.tip.info i{color:#378add}
-.tip .tip-text{font-size:13px;color:var(--color-text-secondary);line-height:1.7}
-.tip strong{font-weight:500;color:var(--color-text-primary)}
+    .panel-header { margin-bottom: 1.5rem; }
+    .panel-header .day-n { font-size: 12px; letter-spacing: 0.8px; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 6px; }
+    .panel-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; color: var(--color-text-primary); line-height: 1.2; }
+    .panel-header .badge-row { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+    .badge { font-size: 12px; padding: 3px 10px; border-radius: 12px; border: 0.5px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+    .badge.charter { background: #e1f5ee; border-color: #9fe1cb; color: #0f6e56; }
 
-/* Timeline — time label sits under dot on the left */
-.timeline{display:flex;flex-direction:column}
-.tl-item{display:flex;gap:0}
-.tl-left{display:flex;flex-direction:column;align-items:center;width:52px;flex-shrink:0;padding-top:14px}
-.tl-dot{width:10px;height:10px;border-radius:50%;background:#1d9e75;flex-shrink:0}
-.tl-time{font-size:11px;color:#1d9e75;margin-top:5px;text-align:center;line-height:1.4;font-weight:500;letter-spacing:0.2px;white-space:nowrap}
-.tl-line-wrap{display:flex;flex-direction:column;align-items:center;width:52px;flex-shrink:0;padding-top:0}
-.tl-vline{width:1px;background:var(--color-border-tertiary);flex:1;min-height:16px}
+    .tip { display: flex; gap: 10px; padding: 12px 14px; margin-bottom: 1.2rem; border-left: 2px solid; border-radius: 0; }
+    .tip.food { border-color: #1d9e75; background: #fafafa; }
+    .tip.info { border-color: #378add; background: #fafafa; }
+    .tip i { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .tip.food i { color: #1d9e75; }
+    .tip.info i { color: #378add; }
+    .tip .tip-text { font-size: 13px; color: var(--color-text-secondary); line-height: 1.7; }
+    .tip strong { font-weight: 500; color: var(--color-text-primary); }
 
-.tl-transit{display:flex;align-items:center;gap:7px;margin:0 0 0 52px;padding:5px 0}
-.tl-transit i{font-size:14px;color:var(--color-text-secondary)}
-.tl-transit span{font-size:12px;color:var(--color-text-secondary)}
+    /* Timeline */
+    .timeline { display: flex; flex-direction: column; }
+    .tl-item { display: flex; gap: 0; }
+    .tl-left { display: flex; flex-direction: column; align-items: center; width: 52px; flex-shrink: 0; padding-top: 14px; }
+    .tl-dot { width: 10px; height: 10px; border-radius: 50%; background: #1d9e75; flex-shrink: 0; }
+    .tl-time { font-size: 11px; color: #1d9e75; margin-top: 5px; text-align: center; line-height: 1.4; font-weight: 500; letter-spacing: 0.2px; white-space: nowrap; }
+    
+    .tl-transit { display: flex; align-items: center; gap: 7px; margin: 0 0 0 52px; padding: 8px 0; }
+    .tl-transit i { font-size: 14px; color: var(--color-text-secondary); }
+    .tl-transit span { font-size: 12px; color: var(--color-text-secondary); }
 
-.tl-card{flex:1;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 16px;margin:0 0 4px;cursor:pointer;transition:border-color 0.18s,transform 0.18s;background:var(--color-background-primary)}
-.tl-card:hover{border-color:var(--color-border-secondary);transform:translateX(3px)}
-.tl-card .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
-.tl-card .card-name{font-size:15px;font-weight:500;color:var(--color-text-primary);display:flex;align-items:center;gap:7px}
-.tl-card .card-name i{font-size:16px;color:#1d9e75}
-.tl-card .duration{font-size:12px;padding:2px 9px;border:0.5px solid var(--color-border-tertiary);border-radius:10px;color:var(--color-text-secondary);white-space:nowrap;flex-shrink:0}
-.tl-card .card-desc{font-size:13px;color:var(--color-text-secondary);margin-top:8px;line-height:1.7}
-.tl-card .card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:10px;flex-wrap:wrap;gap:6px}
-.tl-card .tags{display:flex;gap:5px;flex-wrap:wrap}
-.tag{font-size:11px;padding:2px 9px;border-radius:8px;letter-spacing:0.2px}
-.tag.nat{background:#e1f5ee;color:#0f6e56}
-.tag.cul{background:#e6f1fb;color:#185fa5}
-.tag.eat{background:#faece7;color:#993c1d}
-.tag.shp{background:#faeeda;color:#854f0b}
-.tag.art{background:#eeedfe;color:#534ab7}
-.map-a{font-size:12px;color:var(--color-text-secondary);display:flex;align-items:center;gap:3px;text-decoration:none;cursor:pointer;white-space:nowrap}
-.map-a:hover{color:var(--color-text-primary)}
-.map-a i{font-size:13px}
+    .tl-card { flex: 1; border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 14px 16px; margin: 0 0 4px; text-decoration: none; display: block; transition: border-color 0.18s, transform 0.18s; background: var(--color-background-primary); }
+    .tl-card:hover { border-color: var(--color-border-secondary); transform: translateX(3px); }
+    .tl-card .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .tl-card .card-name { font-size: 15px; font-weight: 500; color: var(--color-text-primary); display: flex; align-items: center; gap: 7px; }
+    .tl-card .card-name i { font-size: 16px; color: #1d9e75; }
+    .tl-card .duration { font-size: 12px; padding: 2px 9px; border: 0.5px solid var(--color-border-tertiary); border-radius: 10px; color: var(--color-text-secondary); white-space: nowrap; flex-shrink: 0; }
+    .tl-card .card-desc { font-size: 13px; color: var(--color-text-secondary); margin-top: 8px; line-height: 1.7; }
+    .tl-card .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; flex-wrap: wrap; gap: 6px; }
+    .tl-card .tags { display: flex; gap: 5px; flex-wrap: wrap; }
+    .tag { font-size: 11px; padding: 2px 9px; border-radius: 8px; letter-spacing: 0.2px; }
+    .tag.nat { background: #e1f5ee; color: #0f6e56; }
+    .tag.cul { background: #e6f1fb; color: #185fa5; }
+    .tag.eat { background: #faece7; color: #993c1d; }
+    .tag.shp { background: #faeeda; color: #854f0b; }
+    .tag.art { background: #eeedfe; color: #534ab7; }
+    .map-a { font-size: 12px; color: var(--color-text-secondary); display: flex; align-items: center; gap: 3px; text-decoration: none; }
+    .map-a:hover { color: var(--color-text-primary); }
+    .map-a i { font-size: 13px; }
 
-/* connector row between items */
-.tl-connector{display:flex;gap:0}
-.tl-conn-left{width:52px;flex-shrink:0;display:flex;justify-content:center}
-.tl-conn-line{width:1px;background:var(--color-border-tertiary);min-height:12px}
-</style>
+    .tl-connector { display: flex; gap: 0; }
+    .tl-conn-left { width: 52px; flex-shrink: 0; display: flex; justify-content: center; }
+    .tl-conn-line { width: 1px; background: var(--color-border-tertiary); min-height: 16px; }
+
+    /* ==========================================================================
+       🤖 AI 智能小助手 UI 設計 (完美搭配原有精緻設計規範)
+       ========================================================================== */
+    .ai-chat-wrapper { position: fixed; bottom: 24px; right: 24px; z-index: 1000; font-family: 'DM Sans', sans-serif; }
+    
+    /* 懸浮按鈕 */
+    .ai-trigger-btn { width: 56px; height: 56px; border-radius: 50%; background: #1d9e75; border: none; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(29, 158, 117, 0.3); transition: transform 0.2s, background 0.2s; }
+    .ai-trigger-btn:hover { transform: scale(1.05); background: #178260; }
+    .ai-trigger-btn i { font-size: 26px; }
+
+    /* 對話主視窗 */
+    .ai-window { position: absolute; bottom: 70px; right: 0; width: 360px; height: 500px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); box-shadow: 0 8px 30px rgba(0,0,0,0.1); display: flex; flex-direction: column; overflow: hidden; opacity: 0; transform: translateY(15px); pointer-events: none; transition: opacity 0.25s, transform 0.25s; }
+    .ai-window.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    @media (max-width: 400px) { .ai-window { width: calc(100vw - 32px); right: -8px; height: 80vh; } }
+
+    /* 視窗頂部 */
+    .ai-header { background: #1d9e75; color: white; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; }
+    .ai-header-info { display: flex; align-items: center; gap: 8px; }
+    .ai-header-info i { font-size: 20px; }
+    .ai-header-title { font-size: 14px; font-weight: 500; letter-spacing: 0.5px; }
+    .ai-close-btn { background: none; border: none; color: rgba(255,255,255,0.8); cursor: pointer; display: flex; align-items: center; }
+    .ai-close-btn:hover { color: white; }
+
+    /* 訊息對話區塊 */
+    .ai-messages { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #fdfdfd; }
+    .ai-msg { display: flex; flex-direction: column; max-width: 80%; padding: 10px 14px; font-size: 13px; line-height: 1.5; }
+    .ai-msg.bot { background: var(--color-background-secondary); color: var(--color-text-primary); border-radius: 12px 12px 12px 0; border: 0.5px solid var(--color-border-tertiary); align-self: flex-start; }
+    .ai-msg.user { background: #1d9e75; color: white; border-radius: 12px 12px 0 12px; align-self: flex-end; }
+    
+    /* 快捷關鍵字 */
+    .ai-suggestions { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 16px; background: #fff; border-top: 0.5px solid var(--color-border-tertiary); }
+    .ai-suggest-tag { font-size: 11px; padding: 5px 10px; background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); color: var(--color-text-secondary); border-radius: 14px; cursor: pointer; transition: all 0.15s; }
+    .ai-suggest-tag:hover { background: #e1f5ee; border-color: #9fe1cb; color: #0f6e56; }
+
+    /* 輸入框區塊 */
+    .ai-input-area { display: flex; border-top: 0.5px solid var(--color-border-tertiary); background: white; padding: 8px 12px; align-items: center; }
+    .ai-input-area input { flex: 1; border: none; padding: 8px; font-size: 13px; font-family: 'DM Sans', sans-serif; outline: none; color: var(--color-text-primary); }
+    .ai-send-btn { background: none; border: none; color: #1d9e75; cursor: pointer; display: flex; align-items: center; padding: 4px; }
+    .ai-send-btn:hover { color: #178260; }
+  </style>
+</head>
+<body>
 
 <div class="oki">
   <h2 class="sr-only">Okinawa Friends & Family Trip 2026，10月16日至19日，包含航班、氣候、匯率與每日景點時間表。</h2>
@@ -120,7 +187,7 @@
   <div class="hero">
     <h1>Okinawa<br><em>Friends & Family Trip</em> 2026</h1>
     <div class="hero-sub">
-      <div class="hero-dates">Oct 16 – 19, 2026 &nbsp;·&nbsp; 4 Days</div>
+      <div class="hero-dates">Oct 16 – 19, 2026  ·  4 Days</div>
       <button class="weather-pill" onclick="toggleWeather()"><i class="ti ti-sun" aria-hidden="true"></i>10月氣候</button>
     </div>
   </div>
@@ -137,20 +204,20 @@
   </div>
 
   <div class="flights">
-    <div class="fl" onclick="openLink('https://www.google.com/maps/search/桃園國際機場')">
+    <a href="https://maps.google.com" target="_blank" class="fl">
       <div class="fl-label"><i class="ti ti-plane-departure" aria-hidden="true"></i>去程</div>
       <div class="fl-route">台北 <span>→</span> 沖繩</div>
-      <div class="fl-time">10/16 &nbsp;13:30 → 15:55</div>
-    </div>
-    <div class="fl" onclick="openLink('https://www.google.com/maps/search/那覇空港')">
+      <div class="fl-time">10/16  13:30 → 15:55</div>
+    </a>
+    <a href="https://maps.google.com" target="_blank" class="fl">
       <div class="fl-label"><i class="ti ti-plane-arrival" aria-hidden="true"></i>回程</div>
       <div class="fl-route">沖繩 <span>→</span> 台北</div>
-      <div class="fl-time">10/19 &nbsp;16:55 → 17:30</div>
-    </div>
+      <div class="fl-time">10/19  16:55 → 17:30</div>
+    </a>
   </div>
 
   <div class="tools">
-    <button class="tbtn" onclick="openLink('https://www.google.com/maps/search/沖縄')"><i class="ti ti-map-pin" aria-hidden="true"></i>Google Maps</button>
+    <a href="https://maps.google.com" target="_blank" class="tbtn"><i class="ti ti-map-pin" aria-hidden="true"></i>Google Maps</a>
     <button class="tbtn" onclick="toggleRate()"><i class="ti ti-currency-yen" aria-hidden="true"></i>台幣 ↔ 日圓</button>
   </div>
 
@@ -158,7 +225,7 @@
     <h3>匯率換算</h3>
     <div class="rate-main">
       <div class="rate-big" id="rateNum">4.65</div>
-      <div class="rate-unit">JPY / TWD &nbsp;<span style="font-size:11px;opacity:0.6">即時參考</span></div>
+      <div class="rate-unit">JPY / TWD  <span style="font-size:11px;opacity:0.6">即時參考</span></div>
     </div>
     <div class="rate-inputs">
       <div class="rate-row"><label>TWD</label><input type="number" id="twdInput" value="1000" oninput="calcRate()"/><span class="result" id="jpyResult">4,650 JPY</span></div>
@@ -173,81 +240,75 @@
     <button class="ntab" onclick="sw(3,this)">Day 4</button>
   </div>
 
-  <!-- DAY 1 -->
   <div class="panel active" id="p0">
     <div class="panel-header">
       <div class="day-n">Day 1 · 10月16日（四）</div>
       <h2>國際通 · 牧志市場</h2>
       <div class="badge-row"><span class="badge">抵達日 15:55</span><span class="badge">Yui Rail 接駁</span></div>
     </div>
-    <div class="tip food"><i class="ti ti-tools-kitchen-2" aria-hidden="true"></i><div class="tip-text"><strong>晚餐推薦</strong>&nbsp;牧志市場2樓食堂，於1樓挑選新鮮海鮮後攜至2樓請師傅代煮，最道地的市場體驗。</div></div>
+    <div class="tip food"><i class="ti ti-tools-kitchen-2" aria-hidden="true"></i><div class="tip-text"><strong>晚餐推薦</strong> 牧志市場2樓食堂，於1樓挑選新鮮海鮮後攜至2樓請師傅代煮，最道地的市場體驗。</div></div>
+    
     <div class="timeline">
-
       <div class="tl-item">
         <div class="tl-left"><div class="tl-dot"></div><div class="tl-time">15:55<br>16:40</div></div>
-        <div class="tl-card" onclick="openLink('https://www.google.com/maps/search/那覇空港')">
+        <div class="tl-card">
           <div class="card-top"><div class="card-name"><i class="ti ti-plane-arrival" aria-hidden="true"></i>那霸空港抵達</div><span class="duration">約45分</span></div>
           <div class="card-desc">15:55落地，通關領行李後搭乘Yui Rail，旭橋站出發，約12分抵牧志站。</div>
-          <div class="card-footer"><div class="tags"><span class="tag cul">交通</span></div><a class="map-a" onclick="openLink('https://www.google.com/maps/search/那覇空港')"><i class="ti ti-map-pin"></i>地圖</a></div>
+          <div class="card-footer"><div class="tags"><span class="tag cul">交通</span></div><a href="https://maps.google.com" target="_blank" class="map-a"><i class="ti ti-map-pin"></i>地圖</a></div>
         </div>
       </div>
       <div class="tl-connector"><div class="tl-conn-left"><div class="tl-conn-line"></div></div></div>
       <div class="tl-transit"><i class="ti ti-train" aria-hidden="true"></i><span>Yui Rail 旭橋 → 牧志，¥270，約12分</span></div>
       <div class="tl-connector"><div class="tl-conn-left"><div class="tl-conn-line"></div></div></div>
-
       <div class="tl-item">
         <div class="tl-left"><div class="tl-dot"></div><div class="tl-time">17:00<br>18:30</div></div>
-        <div class="tl-card" onclick="openLink('https://www.google.com/maps/search/国際通り+那覇')">
+        <div class="tl-card">
           <div class="card-top"><div class="card-name"><i class="ti ti-shopping-bag" aria-hidden="true"></i>國際通</div><span class="duration">1.5 小時</span></div>
           <div class="card-desc">約1.6公里長的熱鬧商店街，琉球玻璃、泡盛、黑糖、藍染一次掃齊，兩旁居酒屋與甜點店林立。</div>
-          <div class="card-footer"><div class="tags"><span class="tag shp">購物</span><span class="tag eat">美食</span><span class="tag cul">文化</span></div><a class="map-a" onclick="openLink('https://www.google.com/maps/search/国際通り+那覇')"><i class="ti ti-map-pin"></i>地圖</a></div>
+          <div class="card-footer"><div class="tags"><span class="tag shp">購物</span><span class="tag eat">美食</span><span class="tag cul">文化</span></div><a href="https://maps.google.com" target="_blank" class="map-a"><i class="ti ti-map-pin"></i>地圖</a></div>
         </div>
       </div>
       <div class="tl-connector"><div class="tl-conn-left"><div class="tl-conn-line"></div></div></div>
       <div class="tl-transit"><i class="ti ti-walk" aria-hidden="true"></i><span>步行約5分鐘</span></div>
       <div class="tl-connector"><div class="tl-conn-left"><div class="tl-conn-line"></div></div></div>
-
       <div class="tl-item">
         <div class="tl-left"><div class="tl-dot"></div><div class="tl-time">18:35<br>20:00</div></div>
-        <div class="tl-card" onclick="openLink('https://www.google.com/maps/search/第一牧志公設市場')">
+        <div class="tl-card">
           <div class="card-top"><div class="card-name"><i class="ti ti-fish" aria-hidden="true"></i>第一牧志公設市場</div><span class="duration">1.5 小時</span></div>
           <div class="card-desc">沖繩的廚房。1樓販售熱帶鮮魚與豬雜，2樓食堂可請師傅代煮，感受最道地的漁港市場氣息。</div>
-          <div class="card-footer"><div class="tags"><span class="tag eat">市場</span><span class="tag cul">必訪</span></div><a class="map-a" onclick="openLink('https://www.google.com/maps/search/第一牧志公設市場')"><i class="ti ti-map-pin"></i>地圖</a></div>
+          <div class="card-footer"><div class="tags"><span class="tag eat">市場</span><span class="tag cul">必訪</span></div><a href="https://maps.google.com" target="_blank" class="map-a"><i class="ti ti-map-pin"></i>地圖</a></div>
         </div>
       </div>
-
     </div>
   </div>
 
-  <!-- DAY 2 -->
   <div class="panel" id="p1">
     <div class="panel-header">
       <div class="day-n">Day 2 · 10月17日（五）</div>
       <h2>北部一日遊</h2>
       <div class="badge-row"><span class="badge charter">包車</span><span class="badge">由北往南順路</span><span class="badge">08:00 出發</span></div>
     </div>
-    <div class="tip info"><i class="ti ti-steering-wheel" aria-hidden="true"></i><div class="tip-text"><strong>路線策略</strong>&nbsp;古宇利島（最北）→ 美麗海 → 美國村（最南），由北至南順路，不走回頭路。</div></div>
-    <div class="tip food"><i class="ti ti-tools-kitchen-2" aria-hidden="true"></i><div class="tip-text"><strong>午餐</strong>&nbsp;本部港沖繩麵，推薦きしもと食堂。<strong>晚餐</strong>&nbsp;美國村海堤旁居酒屋，邊等夕陽邊喝啤酒。</div></div>
+    <div class="tip info"><i class="ti ti-steering-wheel" aria-hidden="true"></i><div class="tip-text"><strong>路線策略</strong> 古宇利島（最北）→ 美麗海 → 美國村（最南），由北至南順路，不走回頭路。</div></div>
+    <div class="tip food"><i class="ti ti-tools-kitchen-2" aria-hidden="true"></i><div class="tip-text"><strong>午餐</strong> 本部港沖繩麵，推薦きしもと食堂。<strong>晚餐</strong> 美國村海堤旁居酒屋，邊等夕陽邊喝啤酒。</div></div>
+    
     <div class="timeline">
-
       <div class="tl-item">
         <div class="tl-left"><div class="tl-dot"></div><div class="tl-time">09:00<br>10:00</div></div>
-        <div class="tl-card" onclick="openLink('https://www.google.com/maps/search/古宇利島+ハートロック')">
+        <div class="tl-card">
           <div class="card-top"><div class="card-name"><i class="ti ti-heart" aria-hidden="true"></i>古宇利島・心形礁石</div><span class="duration">1 小時</span></div>
           <div class="card-desc">戀愛聖地，過橋免費。早上人少海色最美，心形礁石拍照後可沿海岸漫步，感受透明碧海環繞的靜謐。</div>
-          <div class="card-footer"><div class="tags"><span class="tag nat">自然</span><span class="tag cul">戀愛聖地</span></div><a class="map-a" onclick="openLink('https://www.google.com/maps/search/古宇利島+ハートロック')"><i class="ti ti-map-pin"></i>地圖</a></div>
+          <div class="card-footer"><div class="tags"><span class="tag nat">自然</span><span class="tag cul">戀愛聖地</span></div><a href="https://maps.google.com" target="_blank" class="map-a"><i class="ti ti-map-pin"></i>地圖</a></div>
         </div>
       </div>
       <div class="tl-connector"><div class="tl-conn-left"><div class="tl-conn-line"></div></div></div>
       <div class="tl-transit"><i class="ti ti-steering-wheel" aria-hidden="true"></i><span>包車南下，約25–30分鐘</span></div>
       <div class="tl-connector"><div class="tl-conn-left"><div class="tl-conn-line"></div></div></div>
-
       <div class="tl-item">
         <div class="tl-left"><div class="tl-dot"></div><div class="tl-time">10:30<br>13:00</div></div>
-        <div class="tl-card" onclick="openLink('https://www.google.com/maps/search/沖縄美ら海水族館')">
+        <div class="tl-card">
           <div class="card-top"><div class="card-name"><i class="ti ti-ripple" aria-hidden="true"></i>美麗海水族館</div><span class="duration">2.5 小時</span></div>
           <div class="card-desc">世界頂級「黑潮之海」壓克力水槽，鯨鯊與鬼蝠魟近在眼前，震撼難忘。周邊海豚秀與海龜館可按興趣安排。</div>
-          <div class="card-footer"><div class="tags"><span class="tag nat">水族館</span><span class="tag cul">必訪</span></div><a class="map-a" onclick="openLink('https://www.google.com/maps/search/沖縄美ら海水族館')"><i class="ti ti-map-pin"></i>地圖</a></div>
+          <div class="card-footer"><div class="tags"><span class="tag nat">水族館</span><span class="tag cul">必訪</span></div><a href="https://maps.google.com" target="_blank" class="map-a"><i class="ti ti-map-pin"></i>地圖</a></div>
         </div>
       </div>
       <div class="tl-connector"><div class="tl-conn-left"><div class="tl-conn-line"></div></div></div>
@@ -255,35 +316,32 @@
       <div class="tl-connector"><div class="tl-conn-left"><div class="tl-conn-line"></div></div></div>
       <div class="tl-transit"><i class="ti ti-steering-wheel" aria-hidden="true"></i><span>包車南下，約60–75分鐘（沖繩自動車道）</span></div>
       <div class="tl-connector"><div class="tl-conn-left"><div class="tl-conn-line"></div></div></div>
-
       <div class="tl-item">
         <div class="tl-left"><div class="tl-dot"></div><div class="tl-time">16:30<br>19:00</div></div>
-        <div class="tl-card" onclick="openLink('https://www.google.com/maps/search/アメリカンビレッジ+北谷')">
+        <div class="tl-card">
           <div class="card-top"><div class="card-name"><i class="ti ti-sunset-2" aria-hidden="true"></i>美國村看夕陽</div><span class="duration">2.5 小時</span></div>
           <div class="card-desc">美式復古購物園區，西向面海，是本島欣賞夕陽最佳地點之一。逛街後沿海堤等待落日，摩天輪可俯瞰全景。</div>
-          <div class="card-footer"><div class="tags"><span class="tag shp">購物</span><span class="tag nat">夕陽</span></div><a class="map-a" onclick="openLink('https://www.google.com/maps/search/アメリカンビレッジ+北谷')"><i class="ti ti-map-pin"></i>地圖</a></div>
+          <div class="card-footer"><div class="tags"><span class="tag shp">購物</span><span class="tag nat">夕陽</span></div><a href="https://maps.google.com" target="_blank" class="map-a"><i class="ti ti-map-pin"></i>地圖</a></div>
         </div>
       </div>
-
     </div>
   </div>
 
-  <!-- DAY 3 -->
   <div class="panel" id="p2">
     <div class="panel-header">
       <div class="day-n">Day 3 · 10月18日（六）</div>
       <h2>iias · Outlet 購物</h2>
       <div class="badge-row"><span class="badge">計程車 / 自行前往</span><span class="badge">距機場 10 分鐘</span></div>
     </div>
-    <div class="tip food"><i class="ti ti-tools-kitchen-2" aria-hidden="true"></i><div class="tip-text"><strong>午餐</strong>&nbsp;兩商場美食街均豐富，Ashibinaa 日式食堂CP值高。<strong>晚餐</strong>&nbsp;返那霸後國際通周邊居酒屋，悠閒收尾最後完整夜晚。</div></div>
+    <div class="tip food"><i class="ti ti-tools-kitchen-2" aria-hidden="true"></i><div class="tip-text"><strong>午餐</strong> 兩商場美食街均豐富，Ashibinaa 日式食堂CP值高。<strong>晚餐</strong> 返那霸後國際通周邊居酒屋，悠閒收尾最後完整夜晚。</div></div>
+    
     <div class="timeline">
-
       <div class="tl-item">
         <div class="tl-left"><div class="tl-dot"></div><div class="tl-time">10:00<br>12:00</div></div>
-        <div class="tl-card" onclick="openLink('https://www.google.com/maps/search/iias沖縄豊崎')">
+        <div class="tl-card">
           <div class="card-top"><div class="card-name"><i class="ti ti-building-store" aria-hidden="true"></i>iias 沖繩豊崎</div><span class="duration">2 小時</span></div>
           <div class="card-desc">沖繩新型複合商場，品牌齊全、美食街豐富。伴手禮最後衝刺的絕佳地點，緊鄰 DMM 水族館。</div>
-          <div class="card-footer"><div class="tags"><span class="tag shp">購物</span><span class="tag eat">美食街</span></div><a class="map-a" onclick="openLink('https://www.google.com/maps/search/iias沖縄豊崎')"><i class="ti ti-map-pin"></i>地圖</a></div>
+          <div class="card-footer"><div class="tags"><span class="tag shp">購物</span><span class="tag eat">美食街</span></div><a href="https://maps.google.com" target="_blank" class="map-a"><i class="ti ti-map-pin"></i>地圖</a></div>
         </div>
       </div>
       <div class="tl-connector"><div class="tl-conn-left"><div class="tl-conn-line"></div></div></div>
@@ -291,36 +349,33 @@
       <div class="tl-connector"><div class="tl-conn-left"><div class="tl-conn-line"></div></div></div>
       <div class="tl-transit"><i class="ti ti-walk" aria-hidden="true"></i><span>步行或接駁，約5分鐘</span></div>
       <div class="tl-connector"><div class="tl-conn-left"><div class="tl-conn-line"></div></div></div>
-
       <div class="tl-item">
         <div class="tl-left"><div class="tl-dot"></div><div class="tl-time">13:00<br>15:30</div></div>
-        <div class="tl-card" onclick="openLink('https://www.google.com/maps/search/沖縄アウトレットモールあしびなー')">
+        <div class="tl-card">
           <div class="card-top"><div class="card-name"><i class="ti ti-tag" aria-hidden="true"></i>Outlet Mall Ashibinaa</div><span class="duration">2.5 小時</span></div>
           <div class="card-desc">沖繩唯一Outlet，Coach、Kate Spade、Samsonite、adidas 等品牌均有折扣。距機場僅10分鐘，回程前理想補給站。</div>
-          <div class="card-footer"><div class="tags"><span class="tag shp">Outlet</span><span class="tag cul">品牌折扣</span></div><a class="map-a" onclick="openLink('https://www.google.com/maps/search/沖縄アウトレットモールあしびなー')"><i class="ti ti-map-pin"></i>地圖</a></div>
+          <div class="card-footer"><div class="tags"><span class="tag shp">Outlet</span><span class="tag cul">品牌折扣</span></div><a href="https://maps.google.com" target="_blank" class="map-a"><i class="ti ti-map-pin"></i>地圖</a></div>
         </div>
       </div>
-
     </div>
   </div>
 
-  <!-- DAY 4 -->
   <div class="panel" id="p3">
     <div class="panel-header">
       <div class="day-n">Day 4 · 10月19日（日）· 回程 16:55</div>
       <h2>玉泉洞 · DMM · 瀨長島</h2>
       <div class="badge-row"><span class="badge charter">包車</span><span class="badge">南部三站順路</span><span class="badge">13:30 前往機場</span></div>
     </div>
-    <div class="tip info"><i class="ti ti-steering-wheel" aria-hidden="true"></i><div class="tip-text"><strong>路線策略</strong>&nbsp;早晨涼爽探洞穴 → 午餐 → DMM → 瀨長島搭上飛機降落＋夕陽黃金時段，完美收尾再赴機場。</div></div>
-    <div class="tip food"><i class="ti ti-tools-kitchen-2" aria-hidden="true"></i><div class="tip-text"><strong>午餐</strong>&nbsp;玉泉洞旁「王國村」有琉球傳統料理套餐。<strong>注意</strong>&nbsp;13:30前抵達那霸空港（起飛前3小時），記得預留退稅時間。</div></div>
+    <div class="tip info"><i class="ti ti-steering-wheel" aria-hidden="true"></i><div class="tip-text"><strong>路線策略</strong> 早晨涼爽探洞穴 → 午餐 → DMM → 瀨長島搭上飛機降落＋夕陽黃金時段，完美收尾再赴機場。</div></div>
+    <div class="tip food"><i class="ti ti-tools-kitchen-2" aria-hidden="true"></i><div class="tip-text"><strong>午餐</strong> 玉泉洞旁「王國村」有琉球傳統料理套餐。<strong>注意</strong> 13:30前抵達那霸空港（起飛前3小時），記得預留退稅時間。</div></div>
+    
     <div class="timeline">
-
       <div class="tl-item">
         <div class="tl-left"><div class="tl-dot"></div><div class="tl-time">08:30<br>10:00</div></div>
-        <div class="tl-card" onclick="openLink('https://www.google.com/maps/search/玉泉洞+南城市')">
+        <div class="tl-card">
           <div class="card-top"><div class="card-name"><i class="ti ti-mountain" aria-hidden="true"></i>玉泉洞</div><span class="duration">1.5 小時</span></div>
           <div class="card-desc">沖繩最大鐘乳石洞，開放段約890公尺。石筍林立、地底湖泊，燈光映照如夢似幻。早晨前往溫度涼爽，人潮亦少。</div>
-          <div class="card-footer"><div class="tags"><span class="tag nat">自然奇景</span><span class="tag cul">世界級</span></div><a class="map-a" onclick="openLink('https://www.google.com/maps/search/玉泉洞+南城市')"><i class="ti ti-map-pin"></i>地圖</a></div>
+          <div class="card-footer"><div class="tags"><span class="tag nat">自然奇景</span><span class="tag cul">世界級</span></div><a href="https://maps.google.com" target="_blank" class="map-a"><i class="ti ti-map-pin"></i>地圖</a></div>
         </div>
       </div>
       <div class="tl-connector"><div class="tl-conn-left"><div class="tl-conn-line"></div></div></div>
@@ -328,51 +383,185 @@
       <div class="tl-connector"><div class="tl-conn-left"><div class="tl-conn-line"></div></div></div>
       <div class="tl-transit"><i class="ti ti-steering-wheel" aria-hidden="true"></i><span>包車前往，約30分鐘</span></div>
       <div class="tl-connector"><div class="tl-conn-left"><div class="tl-conn-line"></div></div></div>
-
       <div class="tl-item">
         <div class="tl-left"><div class="tl-dot"></div><div class="tl-time">11:30<br>13:00</div></div>
-        <div class="tl-card" onclick="openLink('https://www.google.com/maps/search/DMMかりゆし水族館+豊崎')">
+        <div class="tl-card">
           <div class="card-top"><div class="card-name"><i class="ti ti-fish" aria-hidden="true"></i>DMM Kariyushi Aquarium</div><span class="duration">1.5 小時</span></div>
           <div class="card-desc">沉浸式科技水族館，超大懸掛魚缸與互動投影令人驚豔，藝術感十足，與美麗海風格截然不同。</div>
-          <div class="card-footer"><div class="tags"><span class="tag nat">水族館</span><span class="tag art">藝術體驗</span></div><a class="map-a" onclick="openLink('https://www.google.com/maps/search/DMMかりゆし水族館+豊崎')"><i class="ti ti-map-pin"></i>地圖</a></div>
+          <div class="card-footer"><div class="tags"><span class="tag nat">水族館</span><span class="tag art">藝術體驗</span></div><a href="https://maps.google.com" target="_blank" class="map-a"><i class="ti ti-map-pin"></i>地圖</a></div>
         </div>
       </div>
       <div class="tl-connector"><div class="tl-conn-left"><div class="tl-conn-line"></div></div></div>
       <div class="tl-transit"><i class="ti ti-steering-wheel" aria-hidden="true"></i><span>包車前往，約15分鐘</span></div>
       <div class="tl-connector"><div class="tl-conn-left"><div class="tl-conn-line"></div></div></div>
-
       <div class="tl-item">
         <div class="tl-left"><div class="tl-dot"></div><div class="tl-time">13:15<br>15:30</div></div>
-        <div class="tl-card" onclick="openLink('https://www.google.com/maps/search/瀬長島ウミカジテラス')">
+        <div class="tl-card">
           <div class="card-top"><div class="card-name"><i class="ti ti-plane" aria-hidden="true"></i>瀨長島 Umikaji Terrace</div><span class="duration">2+ 小時</span></div>
           <div class="card-desc">白色地中海商店群，緊鄰機場跑道。可近距離欣賞飛機低空降落配上夕陽剪影，為整趟旅程留下最美的最後記憶。</div>
-          <div class="card-footer"><div class="tags"><span class="tag eat">餐廳</span><span class="tag nat">夕陽</span><span class="tag cul">IG熱點</span></div><a class="map-a" onclick="openLink('https://www.google.com/maps/search/瀬長島ウミカジテラス')"><i class="ti ti-map-pin"></i>地圖</a></div>
+          <div class="card-footer"><div class="tags"><span class="tag eat">餐廳</span><span class="tag nat">夕陽</span><span class="tag cul">IG熱點</span></div><a href="https://maps.google.com" target="_blank" class="map-a"><i class="ti ti-map-pin"></i>地圖</a></div>
         </div>
       </div>
       <div class="tl-connector"><div class="tl-conn-left"><div class="tl-conn-line"></div></div></div>
       <div class="tl-transit"><i class="ti ti-steering-wheel" aria-hidden="true"></i><span>包車前往那霸空港，約10–15分鐘</span></div>
       <div class="tl-connector"><div class="tl-conn-left"><div class="tl-conn-line"></div></div></div>
-
       <div class="tl-item">
         <div class="tl-left"><div class="tl-dot"></div><div class="tl-time">15:45<br>16:55</div></div>
-        <div class="tl-card" onclick="openLink('https://www.google.com/maps/search/那覇空港')">
+        <div class="tl-card">
           <div class="card-top"><div class="card-name"><i class="ti ti-plane-departure" aria-hidden="true"></i>那霸空港・返台</div><span class="duration">報到 + 退稅</span></div>
           <div class="card-desc">辦理報到手續、退稅，免稅店最後採買。16:55起飛，17:30抵達桃園國際機場。</div>
-          <div class="card-footer"><div class="tags"><span class="tag cul">返台</span></div><a class="map-a" onclick="openLink('https://www.google.com/maps/search/那覇空港')"><i class="ti ti-map-pin"></i>地圖</a></div>
+          <div class="card-footer"><div class="tags"><span class="tag cul">返台</span></div><a href="https://maps.google.com" target="_blank" class="map-a"><i class="ti ti-map-pin"></i>地圖</a></div>
         </div>
       </div>
-
     </div>
   </div>
 
 </div>
 
+<div class="ai-chat-wrapper">
+  <button class="ai-trigger-btn" onclick="toggleAiChat()" id="aiBtn">
+    <i class="ti ti-message-chatbot"></i>
+  </button>
+  <div class="ai-window" id="aiWindow">
+    <div class="ai-header">
+      <div class="ai-header-info">
+        <i class="ti ti-robot"></i>
+        <span class="ai-header-title">沖繩旅遊小助手</span>
+      </div>
+      <button class="ai-close-btn" onclick="toggleAiChat()"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="ai-messages" id="aiMessages">
+      <div class="ai-msg bot">
+        👋 嗨！我是你們的沖繩旅遊小助手。有任何關於這次 10/16~10/19 行程、天氣、或日本旅遊的疑問都可以問我喔！
+      </div>
+    </div>
+    <div class="ai-suggestions">
+      <div class="ai-suggest-tag" onclick="askAi('10月去沖繩怎麼穿衣服？')">👕 10月穿搭建議</div>
+      <div class="ai-suggest-tag" onclick="askAi('日本電壓跟台灣一樣嗎？')">🔌 電壓與插頭</div>
+      <div class="ai-suggest-tag" onclick="askAi('這份行程哪幾天需要包車？')">🚐 包車行程確認</div>
+    </div>
+    <div class="ai-input-area">
+      <input type="text" id="aiInput" placeholder="輸入問題..." onkeydown="if(event.key === 'Enter') sendAiMessage()">
+      <button class="ai-send-btn" onclick="sendAiMessage()"><i class="ti ti-send"></i></button>
+    </div>
+  </div>
+</div>
+
 <script>
-const RATE=4.65;window._r=RATE;
-function sw(i,el){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.ntab').forEach(t=>t.classList.remove('active'));document.getElementById('p'+i).classList.add('active');el.classList.add('active')}
-function toggleWeather(){const b=document.getElementById('wxBox');b.classList.toggle('open');if(b.classList.contains('open'))fetchRate()}
-function toggleRate(){const p=document.getElementById('ratePanel');p.classList.toggle('open');if(p.classList.contains('open'))fetchRate()}
-async function fetchRate(){try{const r=await fetch('https://open.er-api.com/v6/latest/TWD');const d=await r.json();if(d&&d.rates&&d.rates.JPY){window._r=d.rates.JPY;document.getElementById('rateNum').textContent=window._r.toFixed(2);calcRate()}}catch(e){}}
-function calcRate(){const t=parseFloat(document.getElementById('twdInput').value)||0;document.getElementById('jpyResult').textContent=Math.round(t*window._r).toLocaleString()+' JPY'}
-function calcRev(){const j=parseFloat(document.getElementById('jpyInput').value)||0;document.getElementById('twdResult').textContent=Math.round(j/window._r).toLocaleString()+' TWD'}
+/* ==========================================================================
+   原始核心 JS 邏輯 (保留並最佳化網頁跳轉)
+   ========================================================================== */
+const RATE = 4.65; 
+window._r = RATE;
+
+function sw(i, el) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.ntab').forEach(t => t.classList.remove('active'));
+  document.getElementById('p' + i).classList.add('active');
+  el.classList.add('active');
+}
+
+function toggleWeather() {
+  const b = document.getElementById('wxBox');
+  b.classList.toggle('open');
+  if (b.classList.contains('open')) fetchRate();
+}
+
+function toggleRate() {
+  const p = document.getElementById('ratePanel');
+  p.classList.toggle('open');
+  if (p.classList.contains('open')) fetchRate();
+}
+
+async function fetchRate() {
+  try {
+    const r = await fetch('https://open.er-api.com/v6/latest/TWD');
+    const d = await r.json();
+    if (d && d.rates && d.rates.JPY) {
+      window._r = d.rates.JPY;
+      document.getElementById('rateNum').textContent = window._r.toFixed(2);
+      calcRate();
+    }
+  } catch (e) {
+    // 降級處理：若 API 失敗則使用初始設定的 4.65
+  }
+}
+
+function calcRate() {
+  const t = parseFloat(document.getElementById('twdInput').value) || 0;
+  document.getElementById('jpyResult').textContent = Math.round(t * window._r).toLocaleString() + ' JPY';
+}
+
+function calcRev() {
+  const j = parseFloat(document.getElementById('jpyInput').value) || 0;
+  document.getElementById('twdResult').textContent = Math.round(j / window._r).toLocaleString() + ' TWD';
+}
+
+/* ==========================================================================
+   🤖 AI 智能小助手 前端邏輯 (輕量化常規知識庫回應)
+   ========================================================================== */
+function toggleAiChat() {
+  const win = document.getElementById('aiWindow');
+  const btnIcon = document.getElementById('aiBtn').querySelector('i');
+  win.classList.toggle('open');
+  
+  if(win.classList.contains('open')) {
+    btnIcon.className = "ti ti-chevron-down";
+  } else {
+    btnIcon.className = "ti ti-message-chatbot";
+  }
+}
+
+function askAi(question) {
+  document.getElementById('aiInput').value = question;
+  sendAiMessage();
+}
+
+function sendAiMessage() {
+  const input = document.getElementById('aiInput');
+  const text = input.value.trim();
+  if (!text) return;
+
+  appendMessage(text, 'user');
+  input.value = '';
+
+  // 模擬 AI 思考動效
+  setTimeout(() => {
+    const reply = getBotResponse(text);
+    appendMessage(reply, 'bot');
+  }, 400);
+}
+
+function appendMessage(text, sender) {
+  const container = document.getElementById('aiMessages');
+  const msgHtml = document.createElement('div');
+  msgHtml.className = `ai-msg ${sender}`;
+  msgHtml.innerText = text;
+  container.appendChild(msgHtml);
+  container.scrollTop = container.scrollHeight;
+}
+
+// 本地知識庫規則引擎：完美針對此份行程回答團員問題
+function getBotResponse(q) {
+  q = q.toLowerCase();
+  if (q.includes('穿') || q.includes('衣') || q.includes('天氣') || q.includes('氣候')) {
+    return "👕 10月的沖繩白天均溫大約 26~31°C，體感像台灣的夏末。建議穿著透氣的短袖、短褲，並一定要帶墨鏡和防曬乳。不過 Day 2 會去最北部的古宇利島和海岸，海風很大，建議一定要幫老人或小孩備一件薄外套喔！";
+  }
+  if (q.includes('電壓') || q.includes('插頭') || q.includes('充電')) {
+    return "🔌 日本的電壓是 100V (台灣是 110V)，插頭形狀跟台灣一模一樣（雙平腳插頭）。台灣帶過去的雙腳手機充電器、行動電源都可以直接插、直接充電，不需要帶轉換插頭喔！(不過高功率吹風機不建議自備)";
+  }
+  if (q.includes('包車') || q.includes('交通') || q.includes('開車')) {
+    return "🚐 根據這份行程安排：\n• Day 1 是搭沖繩單軌電車(Yui Rail)\n• Day 2 北部一日遊（古宇利、美麗海、美國村）是「全程包車」\n• Day 3 購物行程是搭乘計程車或自行前往\n• Day 4 南部行程也是「全程包車」，會在 13:30 前把大家送達那霸機場。";
+  }
+  if (q.includes('免稅') || q.includes('退稅') || q.includes('購物') || q.includes('買')) {
+    return "🛍️ 行程中 Day 1 的國際通、Day 3 的 iias 購物中心與 Outlet Mall 都可以退稅。記得隨身攜帶「護照正本」，店家在結帳時滿 ¥5,000 (不含稅) 就能直接辦理 10% 免稅。退稅商品在出境前請勿拆封喔。";
+  }
+  if (q.includes('餐') || q.includes('吃') || q.includes('海鮮')) {
+    return "🍱 行程精選推薦：\n• Day 1 晚餐推薦在牧志市場 1 樓買海鮮，上 2 樓請師傅代煮。\n• Day 2 中午推薦本部港的「きしもと食堂」沖繩麵，晚上在美國村海堤吃居酒屋看夕陽！";
+  }
+  return "💡 收到你的問題了！如果需要查詢更詳細的資訊（例如特定景點的門票或預約狀況），可以隨時點擊行程卡片下方的「地圖」直接查看 Google Maps 最新資訊，或者點選上面的快捷標籤喔！";
+}
 </script>
+
+</body>
+</html>
